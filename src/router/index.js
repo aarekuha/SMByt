@@ -13,7 +13,27 @@ const routes = [
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue')
-  }
+  },
+  {
+    path: '/cabin',
+    name: 'Cabin',
+    component: () => import('../views/Cabin.vue')
+  },
+  {
+    path: '/modular',
+    name: 'Modular',
+    component: () => import('../views/Modular.vue')
+  },
+  {
+    path: '/pavilion',
+    name: 'Pavilion',
+    component: () => import('../views/Pavilion.vue')
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: () => import('../views/Contacts.vue')
+  },
 ]
 
 const router = new VueRouter({

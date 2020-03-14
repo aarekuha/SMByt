@@ -1,21 +1,33 @@
 <template>
   <div class="container">
     <b-navbar toggleable="lg" type="light" variant="none">
-      <b-navbar-brand href="#"><w>Строй</w> <w>Модуль</w> <w>Быт</w></b-navbar-brand>
+      <b-navbar-brand href="/">
+        <img :src='$parent.logo' alt="Строй модуль быт"/>
+      </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
 
         <b-navbar-nav>
-          <router-link tag="b-nav-item" to="/">Home</router-link>
-          <router-link tag="b-nav-item" to="/About">About</router-link>
+          <router-link v-for="item in items"
+                       v-bind:key="item.name"
+                       tag="b-nav-item"
+                       :exact="item == items[0]"
+                       :to="item.link">
+            {{ item.name }}
+          </router-link>
         </b-navbar-nav>
 
-        <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            <div class="contacts">
+              <b-link v-for="contact in contacts"
+                      v-bind:key="contact.value"
+                      :href="contact.link">
+                <font-awesome-icon :icon="contact.icon" />
+                {{ contact.value }} <br/>
+              </b-link>
+            </div>
           </b-nav-form>
         </b-navbar-nav>
 
@@ -25,23 +37,64 @@
 </template>
 
 <script>
-
 export default {
   data () {
     return {
-
+      items: [
+        { 'name': 'Главная', 'link': "/" },
+        ...this.$parent.items,
+        { 'name': 'Контакты', 'link': "/contacts" },
+      ],
+      contacts: [
+        {
+          'icon': 'phone',
+          'link': 'tel:' + this.$parent.telephone.replace(/ /g, ''),
+          'value': this.$parent.telephone,
+        },
+        {
+          'icon': 'envelope',
+          'link': 'mailto:' + this.$parent.email,
+          'value': this.$parent.email,
+        },
+      ],
     }
   },
-  components: {
-  }
 }
 </script>
 
 <style lang="scss">
+.navbar-brand {
+  font-size: 1rem!important;
+  font-weight: bold;
 
-w {
-  &:nth-child(1) { color: $red!important; }
-  &:nth-child(2) { color: $blue!important; }
-  &:nth-child(3) { color: $gray!important; }
+  &::nth-child(2) {
+    border: 1px solid green;
+    color: $red!important;
+  }
+}
+
+.navbar-nav {
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.router-link-active a {
+  color: $blue!important;
+}
+
+.contacts {
+  text-align: right;
+
+  & a {
+    color: $black;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  & svg {
+    color: $blue;
+  }
 }
 </style>

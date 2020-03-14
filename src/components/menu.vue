@@ -1,23 +1,52 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container-fluid">
+    <b-row>
+      <b-col></b-col>
+      <b-col v-for="item in $parent.items"
+             v-bind:key="item.name"
+             >
+        <router-link :to="item.link">
+          <div>
+            <img :src="item.image"/>
+          </div>
+          {{ item.name }}
+        </router-link>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
   </div>
 </template>
 
-<script>
+<style lang="scss" scoped>
+.container-fluid {
+  background-color: $lightgray;
+}
 
-export default {
-  data () {
-    return {
+img {
+  max-height: 80px;
+  margin-bottom: 15px;
+}
 
-    }
-  },
-  components: {
+.row {
+  padding: 50px;
+  text-transform: uppercase;
+}
+
+a {
+  color: $black;
+  font-size: 11pt;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.router-link-active {
+    color: $blue;
   }
 }
-</script>
 
-<style lang="scss">
-
+.col div {
+  height: 100px;
+}
 </style>

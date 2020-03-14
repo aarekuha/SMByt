@@ -1,39 +1,62 @@
 <template>
   <div id="app">
     <Header/>
-
     <Menu/>
-
-    <router-view/>
-
+    <div class="container body">
+      <router-view/>
+    </div>
     <Footer/>
+    <Header/>
   </div>
 </template>
 
 <script>
 import Header from './components/header.vue'
+import Footer from './components/footer.vue'
+import Menu from './components/menu.vue'
 
 export default {
   data () {
     return {
-
+      logo: '' + require("./assets/logo.png"),
+      telephone: "+7 777 777 77 77",
+      email: "strojmodylbyt@gmail.com",
+      address: "г. Екатеринбург, ул. Ленина, д. 172, оф. 14",
+      items: [
+        {
+          'name': 'Бытовки',
+          'link': '/cabin',
+          'image': require('./assets/cabin.png')
+        },
+        {
+          'name': 'Модульные здания',
+          'link': "/modular",
+          'image': require('./assets/modular.png')
+        },
+        {
+          'name': 'Торговые павильоны',
+          'link': "/pavilion",
+          'image': require('./assets/pavilion.png')
+        },
+      ],
     }
   },
   components: {
     Header,
+    Footer,
+    Menu,
   }
 }
-
-
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Acrom;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $black;
+  margin-bottom: 50px;
 }
 
 #nav {
@@ -41,11 +64,16 @@ export default {
 
   a {
     font-weight: bold;
-    color: #2c3e50;
 
     &.router-link-exact-active {
       color: #42b983;
+      border: 1px solid red;
     }
   }
 }
+
+.body {
+  padding: 20px 50px;
+}
 </style>
+
