@@ -3,14 +3,19 @@
     <Header/>
     <Menu/>
     <div class="container body">
-      <router-view/>
+      <a name="body"></a>
+      <vue-page-transition name="fade-in-right">
+        <router-view />
+      </vue-page-transition>
     </div>
     <Footer/>
     <Header/>
+    <GoTop bg-color="gray" :bottom="50"/>
   </div>
 </template>
 
 <script>
+import GoTop from '@inotom/vue-go-top';
 import Header from './components/header.vue'
 import Footer from './components/footer.vue'
 import Menu from './components/menu.vue'
@@ -42,10 +47,18 @@ export default {
     }
   },
   components: {
+    GoTop,
     Header,
     Footer,
     Menu,
-  }
+  },
+  metaInfo: {
+    title: 'СтройМодульБыт',
+    htmlAttrs: {
+      lang: 'ru',
+      amp: true
+    }
+  },
 }
 </script>
 
@@ -73,7 +86,8 @@ export default {
 }
 
 .body {
-  padding: 20px 50px;
+  margin: 80px 0px;
+  transition: all 1s ease-out;
 }
 </style>
 

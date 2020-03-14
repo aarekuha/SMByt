@@ -63,18 +63,8 @@ export default {
 </script>
 
 <style lang="scss">
-.navbar-brand {
-  font-size: 1rem!important;
-  font-weight: bold;
-
-  &::nth-child(2) {
-    border: 1px solid green;
-    color: $red!important;
-  }
-}
-
 .navbar-nav {
-  font-size: 11pt;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 

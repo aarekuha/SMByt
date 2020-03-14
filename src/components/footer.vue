@@ -3,15 +3,19 @@
     <div class="container-fluid blue">
       <div class="container">
         <b-row>
-          <b-col md="4" lg="3" class="d-none d-lg-block"> <img class="to-bottom" :src="'' + require('../assets/mobile.png')" /> </b-col>
+          <b-col md="4" lg="3" class="d-none d-lg-block">
+            <img class="to-bottom" v-lazy="'' + require('../assets/mobile.png')" />
+          </b-col>
           <b-col class="footer-text" md="4" lg="3">
             <h6>Рассчитать стоимость</h6>
             <p>Предоставляем бесплатную информационную и техническую поддержку всем нашим клиентам.</p>
             <p>Проводим акции и практикуем индивидуальные расценки, при комплектовании крупных объектов.</p>
-            <p>Обращайтесь к нам по телефону {{ $parent.telephone }} и мы расскажем Вам об этом подробнее.</p>
-            <b-button variant="light">Посчитать стоимость</b-button>
+            <p>Обращайтесь к нам по телефону<br/>{{ $parent.telephone }}<br/> и мы расскажем Вам об этом подробнее.</p>
+            <b-button variant="light" href="#body">Посчитать стоимость</b-button>
           </b-col>
-          <b-col md="4" lg="3" class="d-none d-md-block"> <img :src="'' + require('../assets/calc.png')" /> </b-col>
+          <b-col md="4" lg="3" class="d-none d-md-block">
+            <img v-lazy="'' + require('../assets/calc.png')" />
+          </b-col>
         </b-row>
       </div>
     </div>
